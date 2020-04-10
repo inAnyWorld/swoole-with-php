@@ -1,0 +1,25 @@
+{
+  "name": "StrikingPHP",
+  "authors": [
+    {
+      "name": "YuanWu Deng",
+      "email": "code301@163.com"
+    }
+  ],
+  "description": "StrikingPHP framework",
+  "keywords": [
+    "php",
+    "swoole",
+    "strikingPHP"
+  ],
+  "autoload": {
+    "psr-4": {
+      "app\\": "application/",
+      "strikingPHP\\":"framework/strikingPHP"
+    }
+  },
+  "require": {
+    "php": ">=7.0",
+    "ext-swoole":">=4.0"
+  }
+}
