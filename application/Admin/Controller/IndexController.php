@@ -6,11 +6,11 @@
  * Time: 20:21
  */
 
-namespace App\Api\Controller;
+namespace   App\ Admin \ Controller;
 
 /**
  * Class TestController
- * @Controller(prefix="/index")
+ * @Controller(prefix="/admin")
  */
 class IndexController
 {
@@ -19,6 +19,15 @@ class IndexController
      */
     public function index()
     {
-        echo "控制器index方法";
+        echo "xxxx";
+        return "Admin index";
+    }
+
+    /**
+     * @RequestMapping(route="test")
+     */
+    public function test()
+    {
+        return "Admin test";
     }
 }

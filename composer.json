@@ -1,21 +1,15 @@
 {
-  "name": "StrikingPHP",
-  "authors": [
-    {
-      "name": "YuanWu Deng",
-      "email": "code301@163.com"
-    }
-  ],
-  "description": "StrikingPHP framework",
+  "name": "six",
+  "description": "six framework",
   "keywords": [
     "php",
     "swoole",
-    "strikingPHP"
+    "sixStar"
   ],
   "autoload": {
     "psr-4": {
-      "app\\": "application/",
-      "strikingPHP\\":"framework/strikingPHP"
+       "App\\": "application/",
+       "Six\\": "framework/Code301"
     }
   },
   "require": {

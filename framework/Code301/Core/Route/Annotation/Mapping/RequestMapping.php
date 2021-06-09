@@ -1,28 +1,25 @@
-<?php declare(strict_types=1);
+<?php
 
-namespace strikingPHP\core\route\Annotation\Mapping;
+namespace Code301\Core\Route\Annotation\Mapping;
 
 
 class RequestMapping
 {
     /**
+     * Action routing path
+     *
      * @var string
+     * @Required()
      */
-    private $path = '';
+    private $routePath = '';
 
     /**
      * @var string
      */
     private $prefix = '';
 
-    /**
-     * @var string
-     */
     private  $method;
 
-    /**
-     * @var string
-     */
     private  $handle;
 
     /**
@@ -30,22 +27,22 @@ class RequestMapping
      *
      * @param array $values
      */
-    public function __construct($classDocComment,$methodDocComment,$reflection,$method)
+    public function __construct($classDocComment, $methodDocComment, $reflect, $method)
     {
         //注解信息的收集
         preg_match('/@Controller\((.*)\)/i', $classDocComment, $prefix);
         $prefix=str_replace("\"","",explode("=",$prefix[1])[1]); //清除掉引号
         preg_match('/@RequestMapping\((.*)\)/i', $methodDocComment, $suffix);
-        $suffix=str_replace("\"","",explode("=", $suffix[1])[1]); //清除掉引号
+        $suffix=str_replace("\"","",explode("=",$suffix[1])[1]); //清除掉引号
 
         //路由地址（前缀+后缀）
-        $this->prefix = $prefix;
-        $this->path   = $this->prefix . '/' . $suffix;
+        $this->routePath = $prefix.'/'.$suffix;
+
         //解析出来方法类型
-        $this->method = 'GET';
+        $this->method ='GET';
+
         //处理类
-        /**@var \ReflectionClass $reflection**/
-        $this->handle = $reflection->getName() . "@" . $method->getName();
+        $this->handle = $reflect->getName()."@".$method->getName();
     }
 
     /**
@@ -53,7 +50,7 @@ class RequestMapping
      */
     public function getRoute(): string
     {
-        return $this->path;
+        return $this->routePath;
     }
 
     /**
@@ -71,6 +68,7 @@ class RequestMapping
     {
         return $this->handle;
     }
+
     /**
      * @return array
      */
